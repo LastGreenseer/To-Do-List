@@ -21,6 +21,12 @@ const App = () => {
     }
   };
 
+  // The `filter` method is used to create a new array `updatedToDo` that excludes the item with the specified `id`
+  const handleDeleteToDo = (id) => {
+    const updatedToDo = toDo.filter((todo) => todo.id !== id)
+    setToDo(updatedToDo)
+  }
+
   return <h1>To Do List</h1>;
 };
 

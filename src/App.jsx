@@ -15,9 +15,8 @@ const App = () => {
 
   const handleAddToList = () => {
     if (inputValue.trim() !== "") {
-      // Ensures the input is not empty or just whitespace
       // Updates `toDo` using `setToDo` with the new array that includes the new object
-      setToDo([...toDo, { id: toDo.length + 1, text: inputValue }]);
+      setToDo([...toDo, { id: Date.now(), text: inputValue }]); //Date.now ensure each new item has a unigue id
       setInputValue(""); // Clears `inputValue` by making it an empty string
     }
   };
@@ -40,14 +39,17 @@ const App = () => {
         />
         <button onClick={handleAddToList}>Add to List</button>
       </div>
+
+      <div className="listWrapper">
       <ul className="toDoList">
         {toDo.map((todo) => (
           <li key={todo.id}>
             {todo.text}
-            <button onClick={()=> handleDeleteToDo(todo.id)}>Delete</button>
+            <button className="removeButton" onClick={()=> handleDeleteToDo(todo.id)}>Delete</button>
           </li>
         ))}
       </ul>
+      </div>
     </div>
   );
 };

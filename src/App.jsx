@@ -21,10 +21,10 @@ const App = () => {
     }
   };
 
-  // The `filter` method is used to create a new array `updatedToDo` that excludes the item with the specified `id`
+  // The `filter` method is used to exclude the item with the specified 'id' from the list
   const handleDeleteToDo = (id) => {
-    const updatedToDo = toDo.filter((todo) => todo.id !== id);
-    setToDo(updatedToDo);
+    const updatedToDo= toDo.filter((todo) => todo.id !== id); //Updates the `state` with the filtered array
+  setToDo(updatedToDo)
   };
 
   return (
@@ -43,9 +43,11 @@ const App = () => {
       <div className="listWrapper">
       <ul className="toDoList">
         {toDo.map((todo) => (
-          <li key={todo.id}>
+          <li key={todo.id} className="toDoItem">
+            <div className="stickyNote">
             {todo.text}
             <button className="removeButton" onClick={()=> handleDeleteToDo(todo.id)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>
